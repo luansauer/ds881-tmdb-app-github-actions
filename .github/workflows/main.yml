@@ -54,3 +54,23 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+jobs:
+  test:
+    name: '🧪 Testes Automatizados'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: '📥 Checkout do Código'
+        uses: actions/checkout@v4
+
+      - name: '⚙️ Configurar Node.js 20'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: '📦 Instalar Dependências'
+        run: npm ci
+
+      - name: '✅ Executar Testes'
+        run: npm test -- --watchAll=false --passWithNoTests
