@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - release
+  pull_request:
+    branches:
+      - release
   workflow_dispatch:
 
 permissions:
@@ -14,7 +17,7 @@ permissions:
 concurrency:
   group: pages
   cancel-in-progress: false
-
+  
 jobs:
   # --- ETAPA 1: TESTES ---
   test:
